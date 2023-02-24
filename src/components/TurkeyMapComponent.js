@@ -22,9 +22,9 @@ function TurkeyMapComponent() {
   );
 
   const handleData = async(name) => {
-    dispatch({ type: getBegin });
-    const Api_key =  process.env.REACT_APP_API_KEY;
-    const url =  `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${Api_key}&units=metric&lang=tr`;
+    await dispatch({ type: getBegin });
+    const Api_key =await   process.env.REACT_APP_API_KEY;
+    const url = await   `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${Api_key}&units=metric&lang=tr`;
     await axios.get(url).then((data) => dispatch(getData(data.data))).catch((err) => console.log(err));
     navigate("/info");
   }
